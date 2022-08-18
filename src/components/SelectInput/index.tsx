@@ -26,9 +26,8 @@ interface Props {
   setSelectedOption: any;
 }
 
-const SelectInput = ({optionsList}: Props) => {
+const SelectInput = ({optionsList, selectedOption, setSelectedOption}: Props) => {
   const [isOptionsOpen, setIsOptionsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(0);
   const wrapperRef = useRef(null);
   useOutsideAlerter(wrapperRef, setIsOptionsOpen);
 
@@ -38,6 +37,7 @@ const SelectInput = ({optionsList}: Props) => {
 
   const setSelectedThenCloseDropdown = (index: number) => {
     setSelectedOption(index);
+    localStorage.setItem('option', JSON.stringify(index));
     setIsOptionsOpen(false);
   };
 

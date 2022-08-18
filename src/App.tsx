@@ -10,13 +10,27 @@ import {getNews, New} from "./services";
 function App() {
   const [faves, setFaves] = useState(JSON.parse(localStorage.getItem('faves') || '[]'))
   const [showFaves, setShowFaves] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(0);
+  const [selectedOption, setSelectedOption] = useState(JSON.parse(localStorage.getItem('option') || '0'))
+
+  const selectOptions = [
+    "Select your News",
+    "Angular",
+    "Reactjs",
+    "Vuejs"
+  ];
 
   const {
-    data: newsData
+    data: newsData,
+    error,
+    fetchNextPage,
+    hasNextPage,
+    isFetching,
+    isFetchingNextPage,
+    status,
+    refetch
   } = useInfiniteQuery(
     ['news'],
-    ({pageParam = 0}) => getNews({page: pageParam, search:'Reactjs'}),
+    ({pageParam = 0}) => getNews({page: pageParam, search: selectOptions[selectedOption]}),
     {
       refetchOnWindowFocus: false
     }
@@ -47,6 +61,12 @@ function App() {
       return null;
     })
   }, [faves, showFaves, news]);
+
+  useEffect(() => {
+    if(selectedOption > 0)
+      refetch();
+  }, [selectedOption, refetch])
+
   return (
     <div className="App">
       <header>
@@ -59,12 +79,7 @@ function App() {
       </div>
       <div className="Select-container">
         <SelectInput
-          optionsList={[
-            "Select your News",
-            "Angular",
-            "Reactjs",
-            "Vuejs"
-          ]}
+          optionsList={selectOptions}
           selectedOption={selectedOption}
           setSelectedOption={setSelectedOption}
         />
