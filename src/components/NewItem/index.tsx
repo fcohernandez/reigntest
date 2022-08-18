@@ -11,10 +11,15 @@ function NewItem ({article, setFave}: NewItemProps) {
   const {author, story_title, story_url, created_at, fav} = article;
   const setFaveArticle = () => {
     let articles = JSON.parse(localStorage.getItem('faves') || '[]');
-    article.fav = true;
-    articles.push(article);
-    localStorage.setItem('faves', JSON.stringify(articles));
+    if(article.fav){
+      article.fav = false;
+      articles = articles.filter((item: New) => item.created_at !== article.created_at)
+    } else {
+      article.fav = true;
+      articles.push(article);
+    }
     setFave(articles);
+    localStorage.setItem('faves', JSON.stringify(articles));
   }
   return(
     <div className="NewItem-container">

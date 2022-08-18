@@ -9,6 +9,8 @@ import {getNews, New} from "./services";
 
 function App() {
   const [faves, setFaves] = useState(JSON.parse(localStorage.getItem('faves') || '[]'))
+  const [showFaves, setShowFaves] = useState(false);
+
   const {
     data: newsData,
     error,
@@ -24,6 +26,7 @@ function App() {
       refetchOnWindowFocus: false
     }
   );
+
   const getNewsList = (queryData: any) => {
     let list = queryData?.pages ? queryData.pages.reduce((acum: any, curr: any) => [...acum, ...curr.hits], []) : [];
     list.map((article: New) => {
@@ -44,7 +47,7 @@ function App() {
           article.fav = true;
       })
     })
-  }, [faves]);
+  }, [faves, showFaves]);
   return (
     <div className="App">
       <header>
@@ -53,13 +56,13 @@ function App() {
         </div>
       </header>
       <div className="Selector-container">
-        <SelectorButton />
+        <SelectorButton showFaves={showFaves} setShowFaves={setShowFaves}/>
       </div>
       <div className="Select-container">
         <SelectInput />
       </div>
       <div className="News-container">
-        <News news={news} setFave={setFaves}/>
+        <News news={showFaves ? faves : news} setFave={setFaves}/>
       </div>
     </div>
   );

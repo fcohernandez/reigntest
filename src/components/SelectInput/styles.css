@@ -52,8 +52,8 @@ ul.options {
 
 ul.show {
     display: block;
-    position: fixed;
-    margin-top: 1px;
+    position: absolute;
+    margin-top: 2px;
 }
 
 ul.options li {

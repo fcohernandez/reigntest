@@ -1,13 +1,18 @@
 import React from 'react';
 import './styles.css';
 
-function SelectorButton() {
+interface Props {
+  showFaves: boolean;
+  setShowFaves: any;
+}
+
+function SelectorButton({showFaves, setShowFaves}: Props) {
   return(
     <div className="Selector-container">
-      <button className="Button-active">
+      <button className={`Button${showFaves ? '' : '-active'}`} onClick={() => setShowFaves(false)}>
         <span className="Button-text">All</span>
       </button>
-      <button className="Button">
+      <button className={`Button${showFaves ? '-active' : ''}`} onClick={() => setShowFaves(true)}>
         <span className="Button-text">My Faves</span>
       </button>
     </div>
