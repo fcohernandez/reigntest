@@ -1,0 +1,69 @@
+div.wrapper {
+    display: flex;
+    padding-top: 20px;
+    width: 240px;
+}
+
+div.container {
+    width: 240px;
+    height: 32px;
+}
+
+button {
+    border: 1px solid #2e2e2e;
+    border-radius: 4px;
+    background: #fff;
+    width: 100%;
+    padding: 6px 8px;
+    position: relative;
+    text-align: left;
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.57;
+    letter-spacing: normal;
+    color: #343434;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+ul.options {
+    border: 0;
+    display: none;
+    list-style: none;
+    padding: 4px 0;
+    margin-top: -4px;
+    background-color: #fff;
+    width: 238px;
+    box-shadow: 0 2px 2px 0 #dad8d8;
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.57;
+    letter-spacing: normal;
+    color: #343434;
+}
+
+ul.show {
+    display: block;
+    position: fixed;
+    margin-top: 1px;
+}
+
+ul.options li {
+    padding: 6px 10px;
+}
+
+ul.options li:active,
+ul.options li:focus,
+ul.options li:hover,
+ul.options li[aria-selected="true"] {
+    background: #eaeaea;
+    cursor: pointer;
+}

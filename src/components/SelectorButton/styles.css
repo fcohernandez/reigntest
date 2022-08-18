@@ -1,0 +1,50 @@
+.Button {
+    width: 110px;
+    height: 31px;
+    padding: 3px 16px 0 17px;
+    border-radius: 2px;
+    border: solid 1px #d6d6d6;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+}
+
+.Button:hover {
+    border: solid 1px #1797ff;
+}
+
+.Button-active {
+    width: 110px;
+    height: 31px;
+    padding: 3px 16px 0 17px;
+    border-radius: 2px;
+    background: transparent;
+    border: solid 1px #1797ff;
+    display: flex;
+    justify-content: center;
+}
+
+.Button-text {
+    width: 65px;
+    height: 28px;
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.75;
+    letter-spacing: normal;
+    text-align: center;
+    color: #606060;
+}
+
+.Button:last-child {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.Button:first-child {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right-width: 0;
+}
