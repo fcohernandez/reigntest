@@ -1,17 +1,22 @@
 import React from 'react';
 import NewItem from "../NewItem";
 import './styles.css';
+import {New} from "../../services";
 
+type News = {
+  news: New[];
+  setFave: any;
+}
 
-function News() {
+function News({news,setFave}: News) {
   return(
     <div className="Container">
-      <NewItem text="1"/>
-      <NewItem text="2"/>
-      <NewItem text="3"/>
-      <NewItem text="4"/>
-      <NewItem text="5"/>
-      <NewItem text="6"/>
+      {
+        news.map(article => {
+          if(article.story_url && article.story_url && article.created_at && article.author)
+            return <NewItem article={article} key={article.created_at} setFave={setFave}/>
+        })
+      }
     </div>
   )
 }

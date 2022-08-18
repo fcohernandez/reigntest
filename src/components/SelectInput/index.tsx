@@ -108,6 +108,7 @@ const SelectInput = () => {
               onClick={() => {
                 setSelectedThenCloseDropdown(index);
               }}
+              key={index}
             >
               {option}
             </li>
