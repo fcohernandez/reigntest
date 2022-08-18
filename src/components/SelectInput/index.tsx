@@ -20,18 +20,17 @@ function useOutsideAlerter(ref: any, setIsOptionsOpen: any) {
   }, [ref, setIsOptionsOpen]);
 }
 
-const SelectInput = () => {
+interface Props {
+  optionsList: any[];
+  selectedOption: number;
+  setSelectedOption: any;
+}
+
+const SelectInput = ({optionsList}: Props) => {
   const [isOptionsOpen, setIsOptionsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(0);
   const wrapperRef = useRef(null);
   useOutsideAlerter(wrapperRef, setIsOptionsOpen);
-
-  const optionsList = [
-    "Select your News",
-    "Angular",
-    "React",
-    "Vuejs"
-  ];
 
   const toggleOptions = () => {
     setIsOptionsOpen(!isOptionsOpen);

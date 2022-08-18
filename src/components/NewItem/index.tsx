@@ -22,11 +22,11 @@ function NewItem ({article, setFave}: NewItemProps) {
     localStorage.setItem('faves', JSON.stringify(articles));
   }
   return(
-    <div className="NewItem-container">
+    <div className="NewItem-container" id={story_url}>
       <div className="NewItem-info-container">
         <div className="Date-info-container">
           <img src='./clock-icon.svg' alt="clock-icon" className="Clock-icon" />
-          <span className="Date-text">{created_at}{author}</span>
+          <span className="Date-text">{created_at} by {author}</span>
         </div>
         <span className="Info-text">{story_title}</span>
       </div>
