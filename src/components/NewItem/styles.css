@@ -71,6 +71,8 @@
     line-height: 1.43;
     letter-spacing: 0.25px;
     color: #606060;
+    overflow: hidden;
+    min-height: 40px;
 }
 
 .Clock-icon {
