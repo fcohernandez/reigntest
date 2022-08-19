@@ -56,7 +56,6 @@ function NewItem ({article, setFave}: NewItemProps) {
     setFave(articles);
     localStorage.setItem('faves', JSON.stringify(articles));
   }
-  console.log(DateDiff.inHours(new Date(), new Date(created_at)))
   return(
     <div className="NewItem-container" id={story_url}>
       <div className="NewItem-info-container">
