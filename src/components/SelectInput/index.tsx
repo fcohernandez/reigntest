@@ -3,18 +3,13 @@ import './styles.css';
 
 function useOutsideAlerter(ref: any, setIsOptionsOpen: any) {
   useEffect(() => {
-    /**
-     * Alert if clicked on outside of element
-     */
     function handleClickOutside(event: any) {
       if (ref.current && !ref.current.contains(event.target)) {
         setIsOptionsOpen(false);
       }
     }
-    // Bind the event listener
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
-      // Unbind the event listener on clean up
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [ref, setIsOptionsOpen]);
@@ -97,7 +92,7 @@ const SelectInput = ({optionsList, selectedOption, setSelectedOption}: Props) =>
           tabIndex={-1}
           onKeyDown={handleListKeyDown}
         >
-          {optionsList.map((option, index) => (
+          {optionsList.map((option, index) => index !== 0 && (
             <li
               id={option}
               role="option"
@@ -109,6 +104,7 @@ const SelectInput = ({optionsList, selectedOption, setSelectedOption}: Props) =>
               }}
               key={index}
             >
+              <img src={`./${option.toLowerCase()}-icon.png`} alt="select-icon" className="Icon"/>
               {option}
             </li>
           ))}

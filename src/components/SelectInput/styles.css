@@ -58,6 +58,8 @@ ul.show {
 
 ul.options li {
     padding: 6px 10px;
+    display: flex;
+    align-items: center;
 }
 
 ul.options li:active,
@@ -66,4 +68,11 @@ ul.options li:hover,
 ul.options li[aria-selected="true"] {
     background: #eaeaea;
     cursor: pointer;
+}
+
+.Icon {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    padding-right: 10px;
 }
