@@ -12,9 +12,9 @@ function News({news,setFave}: NewsProps) {
   return(
     <div className="Container">
       {
-        news.map(article => {
+        news.map((article, index) => {
           if(article.story_url && article.story_url && article.created_at && article.author)
-            return <NewItem article={article} key={article.created_at} setFave={setFave}/>
+            return <NewItem article={article} key={article.objectID * index} setFave={setFave}/>
           return null;
         })
       }

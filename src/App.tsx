@@ -21,18 +21,15 @@ function App() {
 
   const {
     data: newsData,
-    error,
     fetchNextPage,
     hasNextPage,
-    isFetching,
-    isFetchingNextPage,
-    status,
-    refetch
+    refetch,
   } = useInfiniteQuery(
-    ['news'],
+    ['news', 'selectedOption'],
     ({pageParam = 0}) => getNews({page: pageParam, search: selectOptions[selectedOption]}),
     {
-      refetchOnWindowFocus: false
+      refetchOnWindowFocus: false,
+      getNextPageParam: (lastPage => ((lastPage?.page || 0) + 1) <= (lastPage?.nbPages || 50) ? (lastPage?.page || 0) + 1 : undefined)
     }
   );
 
@@ -60,12 +57,27 @@ function App() {
       })
       return null;
     })
-  }, [faves, showFaves, news]);
+  }, [faves, showFaves, news, setShowFaves]);
 
   useEffect(() => {
     if(selectedOption > 0)
       refetch();
   }, [selectedOption, refetch])
+
+  useEffect(() => {
+    const onScroll = async (event: { target: any }) => {
+      const { scrollHeight, scrollTop, clientHeight } = event.target.scrollingElement;
+
+      if(scrollHeight - scrollTop <= clientHeight) {
+        if (hasNextPage) await fetchNextPage();
+      }
+    }
+
+    document.addEventListener("scroll", onScroll);
+    return () => {
+      document.removeEventListener("scroll", onScroll);
+    }
+  }, [fetchNextPage, hasNextPage])
 
   return (
     <div className="App">

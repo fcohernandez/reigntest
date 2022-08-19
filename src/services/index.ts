@@ -21,6 +21,7 @@ export interface New {
   created_at: string;
   author: string;
   fav?: boolean;
+  objectID: number;
 }
 
 export interface ApiErrorI {

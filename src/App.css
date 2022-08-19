@@ -3,6 +3,7 @@
   flex-direction: column;
   background-color: #fcfcfc;
   height: auto;
+  min-height: 100vh;
 }
 
 .Header-text {
