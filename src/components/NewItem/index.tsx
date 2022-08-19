@@ -23,8 +23,13 @@ function NewItem ({article, setFave}: NewItemProps) {
     localStorage.setItem('faves', JSON.stringify(articles));
   }
   const {date, text} = getDateDifference(new Date(created_at), new Date());
+
+  const openInNewTab = (url: string) => {
+    window.open(url, '_blank', 'noopener,noreferrer');
+  };
+
   return(
-    <div className="NewItem-container" id={story_url}>
+    <div className="NewItem-container" onClick={() => openInNewTab(story_url)}>
       <div className="NewItem-info-container">
         <div className="Date-info-container">
           <img src='./clock-icon.svg' alt="clock-icon" className="Clock-icon" />
